@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/models/user.model';
 import { MoviesModule } from './movies/movies.module';
 import { Movie } from './movies/models/movie.model';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { Movie } from './movies/models/movie.model';
       synchronize: true,
     }),
     UsersModule,
-    MoviesModule
+    MoviesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
