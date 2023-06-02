@@ -11,6 +11,11 @@ jest.mock("react-router-dom", () => ({
 }));
 
 describe("signup-page", () => {
+  test("Should match snapshot", () => {
+    const { container } = render(<SignUp />);
+    expect(container).toMatchSnapshot();
+  });
+
   test("render signup page", async () => {
     render(<SignUp />);
 

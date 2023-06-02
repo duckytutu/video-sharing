@@ -4,6 +4,11 @@ import Home from "./";
 import * as api from "../../api/movies";
 
 describe("home-page", () => {
+  test("Should match snapshot", () => {
+    const { container } = render(<Home />);
+    expect(container).toMatchSnapshot();
+  });
+
   test("renders home page list movie", async () => {
     jest.spyOn(api, "getListMovies").mockResolvedValue({
       data: [

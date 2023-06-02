@@ -16,6 +16,11 @@ jest.mock("../../context/AuthContext", () => {
 jest.mock("../../api/movies");
 const { shareMovie, getMovieDetail } = require("../../api/movies");
 
+test("Should match snapshot", () => {
+  const { container } = render(<Share />);
+  expect(container).toMatchSnapshot();
+});
+
 test("renders share title", () => {
   render(<Share />);
   const title = screen.getByText(/Share A Movie/i);

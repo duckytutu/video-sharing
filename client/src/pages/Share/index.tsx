@@ -1,6 +1,7 @@
 import {
   Button,
   Container,
+  Link,
   styled,
   TextField,
   Typography,
@@ -42,8 +43,12 @@ export default function Share() {
             movieTitle: movie.title,
             movieDescription: movie.description?.substring(0, 100),
           });
-          if (data) toast("Shared movie successfully", { type: "success" });
-          else toast("Shared movie failed", { type: "error" });
+          if (data) {
+            toast("Shared movie successfully", { type: "success" });
+            formik.resetForm();
+          } else {
+            toast("Shared movie failed", { type: "error" });
+          }
         } else toast("Not found movie", { type: "error" });
       } else toast("The link is invalid", { type: "error" });
     } catch (error) {
@@ -96,11 +101,16 @@ export default function Share() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 3 }}
+            sx={{ mt: 3, mb: 2 }}
             disabled={isSubmitting}
           >
             Share
           </Button>
+          <Link href="/">
+            <Button fullWidth variant="outlined" sx={{ mb: 3 }}>
+              Back to list
+            </Button>
+          </Link>
         </Box>
       </Wrapper>
     </Container>
