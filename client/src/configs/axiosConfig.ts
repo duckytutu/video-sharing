@@ -18,4 +18,17 @@ instance.interceptors.request.use(async (config) => {
   return config;
 });
 
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // wrong auth token
+    if ([401].includes(error.response.status)) {
+      localStorage.removeItem("c_user");
+      window.location.reload();
+      return;
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const axios = instance;

@@ -4,4 +4,3 @@ import { io } from 'socket.io-client';
 const URL = process.env.REACT_APP_SERVER_ADDRESS || 'http://localhost:3000';
 
 export const socket = io(URL);
-
